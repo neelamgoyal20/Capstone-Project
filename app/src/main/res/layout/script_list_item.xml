@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/fab_elevation"
+    android:layout_marginRight="@dimen/fab_elevation"
+    android:layout_marginLeft="@dimen/fab_elevation"
+    card_view:cardCornerRadius="@dimen/fab_elevation"
+    card_view:cardElevation="@dimen/fab_elevation"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?selectableItemBackground">
+
+    <RelativeLayout
+        android:id="@+id/scriptItem"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/scriptIcon"
+            android:layout_width="wrap_content"
+            android:src="@android:drawable/ic_menu_save"
+            android:layout_marginTop="@dimen/fab_elevation"
+            android:contentDescription="@string/script_icon_desc"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/scriptTitle"
+            android:text="test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:textStyle="bold|italic"
+            android:contentDescription="@string/script_title_desc"
+            android:layout_toRightOf="@+id/scriptIcon"
+            android:layout_marginTop="@dimen/fab_elevation"
+            android:layout_marginLeft="@dimen/fab_elevation" />
+            android:layout_marginLeft="@dimen/fab_elevation" />
+
+        <TextView
+            android:id="@+id/scriptDate"
+            android:text="test date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/scriptIcon"
+            android:layout_below="@+id/scriptTitle"
+            android:contentDescription="@string/script_date_desc"
+            android:layout_marginLeft="@dimen/fab_elevation"></TextView>
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

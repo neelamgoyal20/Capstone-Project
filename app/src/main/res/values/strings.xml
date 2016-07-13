@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">Teleprompter</string>
+    <string name="banner_ad_unit_id" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="list_of_scripts">List of scripts</string>
+    <string name="title_my_scripts">My Scripts</string>
+    <string name="add_script_desc">Add new script</string>
+    <string name="script_icon_desc">Script left icon</string>
+    <string name="script_title_desc">Script title</string>
+    <string name="script_date_desc">Script Date</string>
+    <string name="title_add_script">Add Script</string>
+    <string name="label_title">Title</string>
+    <string name="label_content">Content</string>
+    <string name="hint_title">Enter title for Script</string>
+    <string name="hint_content">Enter content of Script</string>
+    <string name="save_script">Save Script</string>
+    <string name="title_alert">Alert</string>
+    <string name="btn_txt_ok">Ok</string>
+    <string name="btn_txt_cancel">Cancel</string>
+    <string name="btn_txt_yes">Yes</string>
+    <string name="btn_txt_no">No</string>
+    <string name="confirmation_delete">Are you sure to delete?</string>
 </resources>

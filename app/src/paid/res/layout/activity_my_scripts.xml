@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MyScriptsActivity">
+
+    <android.support.v7.widget.RecyclerView
+        android:contentDescription="@string/list_of_scripts"
+        android:id="@+id/rv_scripts"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:clickable="true"
+        android:src="@android:drawable/ic_input_add"
+        android:id="@+id/add_script"
+        app:elevation="@dimen/fab_elevation"
+        app:pressedTranslationZ="@dimen/activity_horizontal_margin"
+        android:contentDescription="@string/add_script_desc"
+        app:layout_anchor="@+id/rv_scripts"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        app:layout_anchorGravity="bottom|right|end" />
+</RelativeLayout>

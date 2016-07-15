@@ -170,15 +170,10 @@ public class ScriptContentProvider extends ContentProvider {
     @Override
     public String getType(Uri uri) {
         switch (uriMatcher.match(uri)) {
-            /**
-             * Get all  records
-             */
+
             case SCRIPTS:
                 return "vnd.android.cursor.dir/vnd.teleprompter.scripts";
 
-            /**
-             * Get a particular
-             */
             case SCRIPT_ID:
                 return "vnd.android.cursor.item/vnd.teleprompter.scripts";
 

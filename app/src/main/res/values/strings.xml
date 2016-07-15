@@ -5,9 +5,13 @@
     <string name="title_my_scripts">My Scripts</string>
     <string name="add_script_desc">Add new script</string>
     <string name="script_icon_desc">Script left icon</string>
+    <string name="edit_icon_desc">Edit script button</string>
     <string name="script_title_desc">Script title</string>
     <string name="script_date_desc">Script Date</string>
     <string name="title_add_script">Add Script</string>
+    <string name="title_view_script">View Script</string>
+    <string name="title_edit_script">Edit Script</string>
+    <string name="title_prompt_script">Teleprompter</string>
     <string name="label_title">Title</string>
     <string name="label_content">Content</string>
     <string name="hint_title">Enter title for Script</string>
@@ -19,4 +23,5 @@
     <string name="btn_txt_yes">Yes</string>
     <string name="btn_txt_no">No</string>
     <string name="confirmation_delete">Are you sure to delete?</string>
+    <string name="script_ended">Script has reached at end.</string>
 </resources>

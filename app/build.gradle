@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 23
@@ -26,7 +27,7 @@ android {
             versionName '1.0'
         }
         paid {
-            applicationId 'com.learn.teleprompter.paid'
+            applicationId 'com.learn.teleprompter'
             minSdkVersion 14
             targetSdkVersion 23
             versionCode 1
@@ -43,6 +44,6 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:23.0.1'
     compile 'com.android.support:cardview-v7:23.0.1'
     compile 'com.android.support:design:23.0.1'
-    compile 'com.google.android.gms:play-services-analytics:7.5.0'
-    freeCompile 'com.google.android.gms:play-services-ads:7.5.0'
+    compile 'com.google.android.gms:play-services-analytics:9.0.0'
+    freeCompile 'com.google.android.gms:play-services-ads:9.0.0'
 }

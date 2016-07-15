@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -58,11 +59,14 @@ public class ScriptListAdapter extends RecyclerView.Adapter<ScriptListAdapter.Vi
         public RelativeLayout cardView;
         public TextView title;
         public TextView date;
+        public ImageView editBtn;
         public ViewHolder(View view) {
             super(view);
             cardView = (RelativeLayout) view.findViewById(R.id.scriptItem);
             title = (TextView) view.findViewById(R.id.scriptTitle);
             date = (TextView) view.findViewById(R.id.scriptDate);
+            editBtn = (ImageView)view.findViewById(R.id.btn_edit);
+            editBtn.setOnClickListener(this);
             view.setOnClickListener(this);
             view.setOnLongClickListener(this);
 
@@ -71,7 +75,13 @@ public class ScriptListAdapter extends RecyclerView.Adapter<ScriptListAdapter.Vi
         @Override
         public void onClick(View v) {
             if (mItemClickListener != null) {
-                mItemClickListener.onItemClick(v, getLayoutPosition());
+                switch (v.getId()) {
+                    case R.id.btn_edit:
+                        mItemClickListener.onEditIconClick(v, getLayoutPosition());
+                        break;
+                    default:
+                        mItemClickListener.onItemClick(v, getLayoutPosition());
+                }
             }
         }
 

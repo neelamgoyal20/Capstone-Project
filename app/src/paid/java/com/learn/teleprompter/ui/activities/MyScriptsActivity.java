@@ -29,6 +29,10 @@ public class MyScriptsActivity extends AppCompatActivity implements LoaderManage
     private RecyclerView mScriptsListView;
     private ScriptListAdapter mAdapter;
     private LoaderManager mLoaderManager;
+    private int EDIT_SCRIPT_INVOKED = 1001;
+    private int VIEW_SCRIPT_INVOKED = 1002;
+    private int ADD_SCRIPT_INVOKED = 1003;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +44,7 @@ public class MyScriptsActivity extends AppCompatActivity implements LoaderManage
             @Override
             public void onClick(View v) {
                 Intent addIntent = new Intent(MyScriptsActivity.this, AddScriptActivity.class);
-                startActivity(addIntent);
+                startActivityForResult(addIntent, ADD_SCRIPT_INVOKED);
             }
         });
 
@@ -53,7 +57,9 @@ public class MyScriptsActivity extends AppCompatActivity implements LoaderManage
         IItemClickListener listener = new IItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                // Invoke read script activity
+                Intent viewScriptIntent = new Intent(MyScriptsActivity.this, ViewScriptActivity.class);
+                viewScriptIntent.putExtra("ViewScriptObj", resultList.get(position));
+                startActivityForResult(viewScriptIntent, VIEW_SCRIPT_INVOKED);
             }
 
             @Override
@@ -75,6 +81,13 @@ public class MyScriptsActivity extends AppCompatActivity implements LoaderManage
                         getString(R.string.confirmation_delete), getString(R.string.btn_txt_yes), positiveListener,
                         getString(R.string.btn_txt_no), negativeListener);
                 alertDialog.show();
+            }
+
+            @Override
+            public void onEditIconClick(View view, int position) {
+                Intent editScriptIntent = new Intent(MyScriptsActivity.this, EditScriptActivity.class);
+                editScriptIntent.putExtra("EditScriptObj", resultList.get(position));
+                startActivityForResult(editScriptIntent, EDIT_SCRIPT_INVOKED);
             }
         };
         mAdapter = new ScriptListAdapter(MyScriptsActivity.this, resultList, listener);
@@ -105,5 +118,11 @@ public class MyScriptsActivity extends AppCompatActivity implements LoaderManage
     @Override
     public void onLoaderReset(Loader<List<Script>> loader) {
         populateListData(new ArrayList<Script>());
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        mLoaderManager.getLoader(0).forceLoad();
     }
 }

@@ -7,7 +7,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.learn.teleprompter.R;
+import com.learn.teleprompter.TeleprompterApplication;
 import com.learn.teleprompter.db.ScripDBUtils;
 import com.learn.teleprompter.dto.Script;
 
@@ -33,6 +36,15 @@ public class AddScriptActivity extends AppCompatActivity {
                 insertScript();
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        TeleprompterApplication application = (TeleprompterApplication) getApplication();
+        Tracker trackerObj = application.getDefaultTracker();
+        trackerObj.setScreenName(getClass().getName());
+        trackerObj.send(new HitBuilders.ScreenViewBuilder().build());
     }
 
     private void insertScript(){

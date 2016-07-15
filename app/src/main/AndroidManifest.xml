@@ -3,6 +3,7 @@
     package="com.learn.teleprompter" >
 
     <application
+        android:name=".TeleprompterApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -20,10 +21,17 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.activities.AddScriptActivity" />
+        <activity android:name=".ui.activities.TeleprompterActivity"/>
+        <activity android:name=".ui.activities.EditScriptActivity" />
+        <activity android:name=".ui.activities.ViewScriptActivity" />
 
         <provider
             android:name=".db.ScriptContentProvider"
             android:authorities="com.learn.teleprompter"></provider>
+
+        <service android:name="com.google.android.gms.analytics.AnalyticsService"
+            android:enabled="true"
+            android:exported="false"/>
 
     </application>
 

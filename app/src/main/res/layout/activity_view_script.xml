@@ -33,7 +33,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/btn_save"
+        android:layout_above="@+id/btn_prompt"
         android:layout_below="@+id/tv_content"
         android:scrollbars="vertical">
 

@@ -22,7 +22,6 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
     private TextView mScrollRate;
     private int scrollRate[], fontSize[], fontColors[];
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +43,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         fontColors = new int[]{R.color.white, R.color.holo_red_light, R.color.holo_green_light,
                                R.color.holo_orange_light, R.color.holo_blue_light,
                                R.color.holo_purple, R.color.darker_gray, R.color.black};
+        displaySettings();
     }
 
     private void showSelectFontSizeDialog() {
@@ -141,5 +141,50 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
                 showSelectScrollRateDialog();
                 break;
         }
+    }
+
+    private void displaySettings(){
+        int fontColor = CommonUtility.readIntSharedPreference(this, CommonUtility.FONT_COLOR);
+        if(fontColor == -1){
+            mFontColor.setText("White");
+        } else {
+            mFontColor.setText(getPreferenceColorText(fontColor));
+        }
+        int fontSize = CommonUtility.readIntSharedPreference(this, CommonUtility.FONT_SIZE);
+        if(fontSize == -1){
+            fontSize = 16;
+        }
+        mFontSize.setText(fontSize+"");
+        int BGColor = CommonUtility.readIntSharedPreference(this, CommonUtility.BG_COLOR);
+        if(BGColor == -1){
+            mBGColor.setText("Black");
+        } else {
+            mBGColor.setText(getPreferenceColorText(BGColor));
+        }
+
+        int scrollRate = CommonUtility.readIntSharedPreference(this, CommonUtility.SCROLL_RATE);
+        if(scrollRate == -1){
+            scrollRate = 2;
+        }
+        mScrollRate.setText(scrollRate + "");
+    }
+    private String getPreferenceColorText(int color) {
+        switch (color) {
+            case R.color.white:
+                return "White";
+            case R.color.holo_red_light:
+                return "Red";
+            case R.color.holo_green_light:
+                return "Green";
+            case R.color.holo_blue_light:
+                return "Blue";
+            case R.color.black:
+                return "Black";
+            case R.color.darker_gray:
+                return "Gray";
+            case R.color.holo_purple:
+                return "Purple";
+        }
+        return "Black";
     }
 }

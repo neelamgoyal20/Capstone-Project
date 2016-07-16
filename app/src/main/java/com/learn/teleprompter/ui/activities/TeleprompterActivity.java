@@ -103,7 +103,6 @@ public class TeleprompterActivity extends AppCompatActivity {
         }
         tvContent.setTextColor(fontColor);
         tvContent.setTextSize(fontSize);
-        tvContent.setBackgroundColor(BGColor);
         scrollView.setBackgroundColor(BGColor);
     }
     private void restartPropter(){

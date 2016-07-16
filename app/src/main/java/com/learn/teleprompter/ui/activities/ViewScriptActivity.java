@@ -25,7 +25,7 @@ public class ViewScriptActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_script);
         setTitle(R.string.title_view_script);
-        Button btnPromptScript = (Button)findViewById(R.id.btn_save);
+        Button btnPromptScript = (Button)findViewById(R.id.btn_prompt);
         tvTitle = (TextView)findViewById(R.id.script_title);
         tvContent = (TextView)findViewById(R.id.script_content);
         scriptFromIntent = getIntent().getExtras().getParcelable("ViewScriptObj");

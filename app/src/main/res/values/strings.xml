@@ -24,4 +24,12 @@
     <string name="btn_txt_no">No</string>
     <string name="confirmation_delete">Are you sure to delete?</string>
     <string name="script_ended">Script has reached at end.</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_refresh">Refresh</string>
+    <string name="label_fontColor">Text Color</string>
+    <string name="label_fontSize">Text Size</string>
+    <string name="label_bgcolor">Background Color</string>
+    <string name="label_scrollrate">Scroll Rate</string>
+    <string name="desc_prompt_script">Click to prompt script</string>
+    <string name="btn_txt_prompt">Teleprompter</string>
 </resources>

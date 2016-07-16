@@ -12,9 +12,9 @@
         android:startColor="@android:color/tertiary_text_light" />
 
     <corners
-        android:bottomStartRadius="7dp"
-        android:bottomEndRadius="7dp"
-        android:topStartRadius="7dp"
-        android:topEndRadius="7dp" />
+        android:bottomLeftRadius="7dp"
+        android:bottomRightRadius="7dp"
+        android:topLeftRadius="7dp"
+        android:topRightRadius="7dp" />
 
 </shape>

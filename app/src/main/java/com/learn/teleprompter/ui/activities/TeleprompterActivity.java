@@ -2,6 +2,7 @@ package com.learn.teleprompter.ui.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,22 +29,28 @@ public class TeleprompterActivity extends AppCompatActivity {
     private Script scriptFromIntent;
     private ScrollTask mScrollTask;
     private ScrollView scrollView;
-    private int scrollRate, fontSize, fontColor, BGColor;
+    private int scrollRate, fontSize, fontColor, BGColor, yPosition;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prompt_script);
-        scriptFromIntent = getIntent().getExtras().getParcelable("ViewScriptObj");
+        if (savedInstanceState != null) {
+            scriptFromIntent = savedInstanceState.getParcelable("ViewScriptObj");
+            yPosition = savedInstanceState.getInt("ScrollPositionY");
+        } else {
+            scriptFromIntent = getIntent().getExtras().getParcelable("ViewScriptObj");
+        }
         setTitle(scriptFromIntent.title);
-        tvContent = (TextView)findViewById(R.id.script_content);
-        scrollView = (ScrollView)findViewById(R.id.scroll_view);
+        tvContent = (TextView) findViewById(R.id.script_content);
+        scrollView = (ScrollView) findViewById(R.id.scroll_view);
         applySettings();
         tvContent.setText(scriptFromIntent.content);
 
-
+        scrollView.scrollTo(0,yPosition);
         mScrollTask = new ScrollTask();
         ScrollScriptView scrollObj = new ScrollScriptView();
-        scrollObj.setScrollRate(6);
+        scrollObj.setScrollRate(scrollRate);
         scrollObj.setView(scrollView);
         mScrollTask.execute(scrollObj);
     }
@@ -58,7 +65,7 @@ public class TeleprompterActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        switch (id){
+        switch (id) {
             case R.id.prompter_settings:
                 launchSettingsScreen();
                 break;
@@ -70,7 +77,7 @@ public class TeleprompterActivity extends AppCompatActivity {
         return true;
     }
 
-    private void launchSettingsScreen(){
+    private void launchSettingsScreen() {
         Intent settingIntent = new Intent(TeleprompterActivity.this, SettingsActivity.class);
         startActivityForResult(settingIntent, 1001);
 
@@ -79,33 +86,64 @@ public class TeleprompterActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 1001){
+        if (requestCode == 1001) {
             applySettings();
         }
     }
 
-    private void applySettings(){
+    private void applySettings() {
         fontColor = CommonUtility.readIntSharedPreference(this, CommonUtility.FONT_COLOR);
-        if(fontColor == -1){
+        if (fontColor == -1) {
             fontColor = getResources().getColor(R.color.white);
         }
         fontSize = CommonUtility.readIntSharedPreference(this, CommonUtility.FONT_SIZE);
-        if(fontSize == -1){
+        if (fontSize == -1) {
             fontSize = 16;
         }
         BGColor = CommonUtility.readIntSharedPreference(this, CommonUtility.BG_COLOR);
-        if(BGColor == -1){
+        if (BGColor == -1) {
             BGColor = getResources().getColor(R.color.black);
         }
         scrollRate = CommonUtility.readIntSharedPreference(this, CommonUtility.SCROLL_RATE);
-        if(scrollRate == -1){
+        if (scrollRate == -1) {
             scrollRate = 2;
         }
         tvContent.setTextColor(fontColor);
         tvContent.setTextSize(fontSize);
         scrollView.setBackgroundColor(BGColor);
+        if (mScrollTask != null) {
+            mScrollTask.cancel(true);
+            mScrollTask = null;
+            mScrollTask = new ScrollTask();
+            ScrollScriptView scrollObj = new ScrollScriptView();
+            scrollObj.setScrollRate(scrollRate);
+            scrollObj.setView(scrollView);
+            mScrollTask.execute(scrollObj);
+        }
     }
-    private void restartPropter(){
 
+    private void restartPropter() {
+        if (mScrollTask != null) {
+            mScrollTask.cancel(true);
+            mScrollTask = null;
+        }
+        scrollView.scrollTo(0,0);
+        mScrollTask = new ScrollTask();
+        ScrollScriptView scrollObj = new ScrollScriptView();
+        scrollObj.setScrollRate(scrollRate);
+        scrollObj.setView(scrollView);
+        mScrollTask.execute(scrollObj);
+
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelable("ViewScriptObj", scriptFromIntent);
+        outState.putInt("ScrollPositionY", scrollView.getScrollY());
+        if (mScrollTask != null) {
+            mScrollTask.cancel(true);
+            mScrollTask = null;
+        }
     }
 }

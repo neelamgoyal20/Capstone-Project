@@ -5,17 +5,9 @@
 
     <!-- Enable automatic Activity measurement -->
     <bool name="ga_autoActivityTracking">true</bool>
-    <!-- The screen names that will appear in reports -->
-    <screenName name="com.learn.teleprompter.ui.activities.AddScriptActivity">
-        TeleprompterApplication AddScriptScreen
-    </screenName>
 
     <!--  The property id associated with this analytics tracker -->
     <string name="ga_trackingId">UA-80824807-1</string>
-
-    <!--<string name="ga_sampleFrequency">100.0</string>
-
-    <bool name="ga_reportUncaughtExceptions">true</bool>-->
 
     <!--
       See Project Structure -> Analytics -> Google Analytics -> Learn More

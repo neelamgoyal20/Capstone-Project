@@ -2,9 +2,16 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'AndroidKeystore'
+            keyPassword 'android'
+            storeFile file('signing keys/android.jks')
+            storePassword 'android'
+        }
+    }
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
-
     defaultConfig {
         applicationId "com.learn.teleprompter"
         minSdkVersion 14
@@ -25,6 +32,7 @@ android {
             targetSdkVersion 22
             versionCode 1
             versionName '1.0'
+            signingConfig signingConfigs.config
         }
         paid {
             applicationId 'com.learn.teleprompter'
@@ -32,6 +40,7 @@ android {
             targetSdkVersion 23
             versionCode 1
             versionName '1.0'
+            signingConfig signingConfigs.config
         }
     }
 }

@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.learn.teleprompter" >
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:name=".TeleprompterApplication"
         android:allowBackup="true"
@@ -9,6 +13,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
+
         <!-- This meta-data tag is required to use Google Play Services. -->
         <meta-data
             android:name="com.google.android.gms.version"
@@ -17,32 +22,34 @@
         <activity android:name=".ui.activities.MyScriptsActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".ui.activities.AddScriptActivity" />
-        <activity android:name=".ui.activities.TeleprompterActivity"/>
+        <activity android:name=".ui.activities.TeleprompterActivity" />
         <activity android:name=".ui.activities.EditScriptActivity" />
         <activity android:name=".ui.activities.ViewScriptActivity" />
-        <activity android:name=".ui.activities.SettingsActivity"/>
+        <activity android:name=".ui.activities.SettingsActivity" />
 
         <provider
             android:name=".db.ScriptContentProvider"
             android:authorities="com.learn.teleprompter"
+            android:enabled="true"
             android:exported="true"
-            android:enabled="true"
-            android:grantUriPermissions="true"></provider>
+            android:grantUriPermissions="true" />
 
-        <service android:name="com.google.android.gms.analytics.AnalyticsService"
+        <service
+            android:name="com.google.android.gms.analytics.AnalyticsService"
             android:enabled="true"
-            android:exported="false"/>
+            android:exported="false" />
+        <service
+            android:name=".service.TeleprompterService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
 
-        <service android:name=".service.TeleprompterService"
-            android:permission="android.permission.BIND_REMOTEVIEWS"/>
         <receiver android:name=".appwidget.TeleprompterWidget" >
-            <intent-filter >
-                <action
-                    android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
 
             <meta-data
@@ -51,7 +58,4 @@
         </receiver>
     </application>
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 </manifest>

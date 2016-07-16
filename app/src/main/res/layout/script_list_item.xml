@@ -44,7 +44,7 @@
             android:singleLine="true"
             android:textStyle="bold|italic"
             android:contentDescription="@string/script_title_desc"
-
+            android:layout_marginLeft="@dimen/fab_elevation"
             android:layout_marginStart="@dimen/fab_elevation" />
 
         <TextView
@@ -54,6 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/scriptTitle"
             android:contentDescription="@string/script_date_desc"
+            android:layout_marginLeft="@dimen/fab_elevation"
             android:layout_marginStart="@dimen/fab_elevation"/>
         </LinearLayout>
         <ImageView

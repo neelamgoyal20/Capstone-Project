@@ -32,4 +32,6 @@
     <string name="label_scrollrate">Scroll Rate</string>
     <string name="desc_prompt_script">Click to prompt script</string>
     <string name="btn_txt_prompt">Teleprompter</string>
+    <string name="title_error">Title can\'t be empty.</string>
+    <string name="content_error">Content can\'t be empty.</string>
 </resources>

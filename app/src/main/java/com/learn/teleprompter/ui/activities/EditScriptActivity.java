@@ -2,6 +2,9 @@ package com.learn.teleprompter.ui.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,6 +34,22 @@ public class EditScriptActivity extends AppCompatActivity {
         scriptFromIntent = getIntent().getExtras().getParcelable("EditScriptObj");
         tvTitle.setText(scriptFromIntent.title);
         edtContent.setText(scriptFromIntent.content);
+        edtContent.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                edtContent.setError(null);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
         btnUpdateScript.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,6 +59,10 @@ public class EditScriptActivity extends AppCompatActivity {
     }
 
     private void updateScript(){
+        if(TextUtils.isEmpty(edtContent.getText().toString())){
+            edtContent.setError(getString(R.string.content_error));
+            return;
+        }
         scriptFromIntent.content = edtContent.getText().toString();
         ScripDBUtils.getInstance(this).updateScript(scriptFromIntent);
         finish();

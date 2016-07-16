@@ -32,7 +32,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/scriptIcon"
+            android:layout_toEndOf="@+id/scriptIcon"
             android:layout_toLeftOf="@+id/btn_edit"
+            android:layout_toStartOf="@+id/btn_edit"
             android:orientation="vertical">
         <TextView
             android:id="@+id/scriptTitle"
@@ -59,6 +61,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/btn_edit"
             android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:contentDescription="@string/edit_icon_desc"
             android:clickable="true"
             android:focusable="true"
